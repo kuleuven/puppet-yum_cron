@@ -1,0 +1,4 @@
+---
+yum_cron::config_path: /etc/yum/yum-cron.conf
+yum_cron::debug_level: -2
+yum_cron::randomwait: 360

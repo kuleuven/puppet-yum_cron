@@ -1,0 +1,5 @@
+---
+yum_cron::package_name: 'yum-cron'
+yum_cron::service_name: 'yum-cron'
+yum_cron::service_hasstatus: true
+yum_cron::service_hasrestart: true

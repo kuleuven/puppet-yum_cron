@@ -1,17 +1,16 @@
 # Private class
 class yum_cron::install {
-  if $caller_module_name != $module_name {
-    fail("Use of private class ${name} by ${caller_module_name}")
-  }
 
-  package { 'yum-cron':
-    ensure => $yum_cron::package_ensure_real,
-    name   => $yum_cron::package_name,
-  }
+  if $yum_cron::package_manage {
 
-  if $::operatingsystem =~ /Scientific/ and $yum_cron::yum_autoupdate_ensure == 'absent' {
-    package { 'yum-autoupdate':
-      ensure  => absent,
+    package { $yum_cron::package_name:
+      ensure => $yum_cron::package_ensure,
+    }
+
+    if $::operatingsystem =~ /Scientific/ and $yum_cron::yum_autoupdate_ensure == 'absent' {
+      package { 'yum-autoupdate':
+        ensure  => absent,
+      }
     }
   }
 }

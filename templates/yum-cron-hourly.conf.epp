@@ -29,7 +29,6 @@ apply_updates = <%= $yum_cron::apply_updates %>
 # random_sleep is 0 or negative, the program will run immediately.
 random_sleep = <%= $yum_cron::random_sleep %>
 
-
 [emitters]
 # Name to use for this system in messages that are emitted.  If
 # system_name is None, the hostname will be used.
@@ -74,7 +73,7 @@ group_package_types = mandatory, default
 # -4: critical
 # -3: critical+errors
 # -2: critical+errors+warnings (default)
-debuglevel = <%= $yum_cron::debuglevel %>
+debuglevel = <%= $yum_cron::debug_level %>
 
 # skip_broken = True
 mdpolicy = group:main

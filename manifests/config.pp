@@ -1,27 +1,26 @@
 # Private class
 class yum_cron::config {
-  if $caller_module_name != $module_name {
-    fail("Use of private class ${name} by ${caller_module_name}")
+
+
+  file { $yum_cron::config:
+    ensure  => file,
+    owner   => 0,
+    group   => 0,
+    mode    => '0644',
+    content => epp('yum_cron/yum-cron.conf.epp'),
+
   }
 
+  file { $yum_cron::config_cron:
+    ensure  => file,
+    owner   => 0,
+    group   => 0,
+    mode    => '0644',
+    content => epp('yum_cron/0yum-hourly.cron.epp'),
+  }
+
+
   if $yum_cron::ensure == 'present' {
-    if $::operatingsystemmajrelease >= '7' {
-      Yum_cron_config {
-        notify => $yum_cron::config_notify,
-      }
-
-      yum_cron_config { 'commands/update_cmd': value => $yum_cron::update_cmd }
-      yum_cron_config { 'commands/update_messages': value => $yum_cron::update_messages }
-      yum_cron_config { 'commands/download_updates': value => $yum_cron::download_updates_str }
-      yum_cron_config { 'commands/apply_updates': value => $yum_cron::apply_updates_str }
-      yum_cron_config { 'commands/random_sleep': value => $yum_cron::randomwait }
-      yum_cron_config { 'emitters/system_name': value => $yum_cron::systemname }
-      yum_cron_config { 'email/email_to': value => $yum_cron::mailto }
-      yum_cron_config { 'email/email_host': value => $yum_cron::email_host }
-      yum_cron_config { 'base/debuglevel': value => $yum_cron::debug_level }
-
-      create_resources(yum_cron_config, $yum_cron::extra_configs)
-    }
 
     if $::operatingsystemmajrelease < '7' {
       Shellvar {

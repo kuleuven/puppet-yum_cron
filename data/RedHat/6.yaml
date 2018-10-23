@@ -4,3 +4,4 @@ yum_cron::debug_level: 0
 yum_cron::randomwait: 60
 yum_cron::days_of_week: '0123456'
 yum_cron::cleanday: '0'
+yum_cron::service_provider: sysvinit

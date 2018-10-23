@@ -5,3 +5,4 @@ yum_cron::randomwait: 360
 yum_cron::update_cmd: 'default'
 yum_cron::email_host: 'localhost'
 yum_cron::update_messages: 'yes'
+yum_cron::service_provider: systemd

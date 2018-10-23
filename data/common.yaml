@@ -13,4 +13,4 @@ yum_cron::service_hasstatus: true
 yum_cron::service_name: 'yum-cron'
 yum_cron::config_path: ~
 yum_cron::extra_configs: {}
-
+yum_cron::hostname: "%{facts.networking.fqdn}"

@@ -33,8 +33,7 @@ random_sleep = <%= $yum_cron::random_sleep %>
 [emitters]
 # Name to use for this system in messages that are emitted.  If
 # system_name is None, the hostname will be used.
-#system_name = <% $yum_cron::hostname %>
-system_name = <%= $facts[fqdn] %>
+system_name = <%= $yum_cron::hostname %>
 
 # How to send messages.  Valid options are stdio and email.  If
 # emit_via includes stdio, messages will be sent to stdout; this is useful

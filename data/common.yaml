@@ -1,5 +1,16 @@
 ---
+yum_cron::apply_updates: false
+yum_cron::download_updates: true
+yum_cron::enable: true
+yum_cron::ensure: 'present'
+yum_cron::package_ensure: ~
 yum_cron::package_name: 'yum-cron'
-yum_cron::service_name: 'yum-cron'
-yum_cron::service_hasstatus: true
+yum_cron::package_name: ~
+yum_cron::service_enable: ~
+yum_cron::service_ensure: ~
 yum_cron::service_hasrestart: true
+yum_cron::service_hasstatus: true
+yum_cron::service_name: 'yum-cron'
+yum_cron::config_path: ~
+yum_cron::extra_configs: {}
+

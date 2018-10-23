@@ -2,3 +2,6 @@
 yum_cron::config_path: /etc/yum/yum-cron.conf
 yum_cron::debug_level: -2
 yum_cron::randomwait: 360
+yum_cron::update_cmd: 'default'
+yum_cron::email_host: 'localhost'
+yum_cron::update_messages: 'yes'

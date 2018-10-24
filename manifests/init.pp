@@ -35,7 +35,6 @@ class yum_cron (
   String $package_name,
   String $service_name,
   String $systemname,
-  String $service_provider,
   String $update_cmd,
 ){
 

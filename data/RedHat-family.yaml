@@ -5,4 +5,3 @@ yum_cron::service_hasstatus: true
 yum_cron::service_hasrestart: true
 yum_cron::systemname: "%{facts.networking.fqdn}"
 yum_cron::mailto: 'root'
-yum_cron::debug_level: ''

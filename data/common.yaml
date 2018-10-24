@@ -1,9 +1,9 @@
 ---
 yum_cron::apply_updates: false
 yum_cron::config: /etc/yum/yum-cron.conf
-yum_cron::config_hourly: /etc/yum/yum-cron-hourly.conf
 yum_cron::config_cron: /etc/cron.hourly/0yum-hourly.cron
-yum_cron::debug_level: -2
+yum_cron::config_cron_hourly: /etc/yum/yum-cron-hourly.conf
+yum_cron::debug_level: '-2'
 yum_cron::download_updates: true
 yum_cron::email_from: 'root@localhost'
 yum_cron::email_host: "%{facts.networking.fqdn}"
@@ -12,9 +12,11 @@ yum_cron::emit_via: 'stdio' #stdio/email/none
 yum_cron::enable: true
 yum_cron::extra_configs: {}
 yum_cron::hostname: "%{facts.networking.fqdn}"
-yum_cron::output_width: '80'
+yum_cron::output_width: 80
 yum_cron::package_ensure: 'present'
+yum_cron::package_manage: true
 yum_cron::package_name: 'yum-cron'
+yum_cron::random_sleep: 120
 yum_cron::service_enable: ~
 yum_cron::service_ensure: ~
 yum_cron::service_hasrestart: true

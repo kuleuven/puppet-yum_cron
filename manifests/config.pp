@@ -4,7 +4,7 @@ class yum_cron::config {
   $randomwait = fqdn_rand(300)
 
 
-  if $::operatingsystemmajrelease = '7' {
+  if $::operatingsystemmajrelease == '7' {
 
     file { $yum_cron::config:
       ensure  => file,
@@ -33,7 +33,7 @@ class yum_cron::config {
     }
   }
 
-  if $::operatingsystemmajrelease = '6' {
+  if $::operatingsystemmajrelease == '6' {
 
     file { $yum_cron::config:
       ensure  => file,

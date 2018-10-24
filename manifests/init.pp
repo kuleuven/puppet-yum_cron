@@ -6,7 +6,7 @@ class yum_cron (
   Boolean $download_updates,
   Boolean $package_manage,
   Boolean $service_manage,
-  Enum['yes','no'] $serivce_waits,
+  Enum['yes','no'] $service_waits,
   Enum['yes','no'] $update_messages,
   Hash $extra_configs,
   Integer $output_width,
@@ -35,6 +35,7 @@ class yum_cron (
   String $package_name,
   String $service_name,
   String $systemname,
+  String $service_provider,
   String $update_cmd,
 ){
 

@@ -15,21 +15,21 @@ class yum_cron::config {
       notify  => Service['yum-cron'],
     }
 
-    file { $yum_cron::config_cron:
-      ensure  => file,
-      owner   => 0,
-      group   => 0,
-      mode    => '0644',
-      content => epp('yum_cron/yum-cron.conf.epp'),
-      notify  => Service['yum-cron'],
-    }
-
     file { $yum_cron::config_cron_hourly:
       ensure  => file,
       owner   => 0,
       group   => 0,
       mode    => '0644',
       content => epp('yum_cron/0yum-hourly.cron.epp'),
+      notify  => Service['yum-cron'],
+    }
+
+    file { $yum_cron::config_yum_hourly:
+      ensure  => file,
+      owner   => 0,
+      group   => 0,
+      mode    => '0644',
+      content => epp('yum_cron/yum-cron-hourly.conf.epp'),
     }
   }
 

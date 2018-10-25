@@ -8,4 +8,4 @@ if [[ ! -f /var/lock/subsys/yum-cron ]]; then
 fi
 
 # Action!
-exec /usr/sbin/yum-cron <%= $yum_cron::config_hourly %>
+exec /usr/sbin/yum-cron <%= $yum_cron::config_yum_hourly %>

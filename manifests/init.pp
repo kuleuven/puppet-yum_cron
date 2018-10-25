@@ -25,7 +25,7 @@ class yum_cron (
   Pattern[/^[0-6]+$/] $days_of_week,
   Pattern[/^[0-9]+$/] $randomwait,
   Stdlib::Absolutepath $config,
-  Stdlib::Absolutepath $config_cron,
+  Stdlib::Absolutepath $config_yum_hourly,
   Stdlib::Absolutepath $config_cron_hourly,
   String $email_from,
   String $email_host,

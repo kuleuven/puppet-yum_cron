@@ -18,16 +18,6 @@
 
 The yum_cron module manages the *yum-cron* package to allow for automatic updates and available updates notifications.
 
-## Backwards Compatibility
-
-Version 3.x of this module modified the way `apply_updates` and `download_updates` parameters are handled.  `apply_updates` now takes precedence over `download_updates`.  If `apply_updates` is `true` then `download_updates` has no effect.
-
-
-Version 2.x of this module added and removed many parameters.  See [CHANGELOG](CHANGELOG.md) for detailed list of all the changes.
-
-
-Version 1.x of this module replaced the **disable_yum_autoupdate** and **remove_yum_autoupdate** parameters with **yum_autoupdate_ensure**.  The default behavior is still to disable yum-autoupdate.
-
 ## Usage
 
 ### Class: yum_cron
@@ -80,42 +70,83 @@ To define additional configuration options for EL7:
 
 #### Class: `yum_cron`:
 
-Installs and configures yum-cron.  Default values in Hiera format are below.
+### Parameters
 
-$::osfamily == 'RedHat'
+#### Common
 
-    yum_cron::ensure: 'present'
-    yum_cron::enable: true
-    yum_cron::download_updates: true
-    yum_cron::apply_updates: false
-    yum_cron::mailto: 'root'
-    yum_cron::systemname: "%{::fqdn}"
-    yum_cron::days_of_week: '0123456'
-    yum_cron::cleanday: '0'
-    yum_cron::update_cmd: 'default'
-    yum_cron::update_messages: 'yes'
-    yum_cron::email_host: 'localhost'
-    yum_cron::extra_configs: {}
-    yum_cron::yum_autoupdate_ensure: 'disabled'
-    yum_cron::package_ensure: undef
-    yum_cron::package_name: 'yum-cron'
-    yum_cron::service_name: 'yum-cron'
-    yum_cron::service_ensure: undef
-    yum_cron::service_enable: undef
-    yum_cron::service_hasstatus: true
-    yum_cron::service_hasrestart: true
+```yaml
+yum_cron::apply_updates: 'no'
+yum_cron::check_first: 'no'
+yum_cron::check_only: 'yes'
+yum_cron::cleanday: '0'
+yum_cron::config: /etc/yum/yum-cron.conf
+yum_cron::config_cron_hourly: /etc/cron.hourly/0yum-hourly.cron
+yum_cron::config_yum_hourly: /etc/yum/yum-cron-hourly.conf
+yum_cron::days_of_week: '0123456'
+yum_cron::debug_level: '-2'
+yum_cron::download_only: 'yes'
+yum_cron::download_updates: 'yes'
+yum_cron::email_from: 'root@localhost'
+yum_cron::email_host: "%{facts.networking.fqdn}"
+yum_cron::email_to: 'root'
+yum_cron::emit_via: 'stdio' #stdio/email/none
+yum_cron::enable: true
+yum_cron::error_level: '0'
+yum_cron::extra_configs: {}
+yum_cron::hostname: "%{facts.networking.fqdn}"
+yum_cron::output_width: 80
+yum_cron::package_ensure: 'present'
+yum_cron::package_manage: true
+yum_cron::package_name: 'yum-cron'
+yum_cron::random_sleep: 360
+yum_cron::random_sleep_hourly: 15
+yum_cron::randomwait: '60'
+yum_cron::service_enable: ~
+yum_cron::service_ensure: ~
+yum_cron::service_hasrestart: true
+yum_cron::service_hasstatus: true
+yum_cron::service_manage: true
+yum_cron::service_name: 'yum-cron'
+yum_cron::service_provider: ~
+yum_cron::service_wait_time: 300
+yum_cron::service_waits: 'yes'
+yum_cron::update_cmd: 'default'
+yum_cron::update_messages: 'yes'
+yum_cron::yum_autoupdate_ensure: ~
 
-$::operatingsystemmajrelease == '7'
+```
+#### RedHat family
 
-    yum_cron::debug_level: '-2'
-    yum_cron::randomwait: '360'
-    yum_cron::config_path: '/etc/yum/yum-cron.conf'
+```yaml
+---
+yum_cron::package_name: 'yum-cron'
+yum_cron::service_name: 'yum-cron'
+yum_cron::service_hasstatus: true
+yum_cron::service_hasrestart: true
+yum_cron::systemname: "%{facts.networking.fqdn}"
+yum_cron::mailto: 'root'
+```
 
-$::operatingsystemmajrelease == '6'
+#### RedHat 6
 
-    yum_cron::debug_level: '0'
-    yum_cron::randomwait: '60'
-    yum_cron::config_path: '/etc/sysconfig/yum-cron'
+```yaml
+---
+yum_cron::config: /etc/sysconfig/yum-cron
+yum_cron::debug_level: '0'
+yum_cron::service_provider: 'sysvinit'
+```
+
+#### RedHat 7
+
+```yaml
+---
+yum_cron::randomwait: '360'
+yum_cron::service_provider: 'systemd'
+```
+
+
+
+
 
 ##### `ensure`
 

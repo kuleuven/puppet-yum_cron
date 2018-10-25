@@ -35,25 +35,25 @@ describe 'Puppet::Type.type(:yum_cron_config)' do
   end
 
   it 'accepts a valid value' do
-    @yum_cron_config[:value] = 'bar'
-    expect(@yum_cron_config[:value]).to eql('bar')
+    let(:yum_cron_config)[:value] = 'bar'
+    expect(yum_cron_config[:value]).to eql('bar')
   end
 
   it 'does not accept a value with whitespace' do
-    @yum_cron_config[:value] = 'b ar'
-    expect(@yum_cron_config[:value]).to eql('b ar')
+    let(:yum_cron_config)[:value] = 'b ar'
+    expect(yum_cron_config[:value]).to eql('b ar')
   end
 
   it 'accepts valid ensure values' do
-    @yum_cron_config[:ensure] = :present
-    expect(@yum_cron_config[:ensure]).to be(:present)
-    @yum_cron_config[:ensure] = :absent
-    expect(@yum_cron_config[:ensure]).to be(:absent)
+    let(:yum_cron_config)[:ensure] = :present
+    expect(yum_cron_config[:ensure]).to be(:present)
+    let(:yum_cron_config)[:ensure] = :absent
+    expect(yum_cron_config[:ensure]).to be(:absent)
   end
 
   it 'does not accept invalid ensure values' do
     expect {
-      @yum_cron_config[:ensure] = :latest
+      let(:yum_cron_config)[:ensure] = :latest
     }.to raise_error(Puppet::Error, %r{Invalid value})
   end
 
@@ -61,21 +61,21 @@ describe 'Puppet::Type.type(:yum_cron_config)' do
     it 'autorequires File[/etc/yum/yum-cron.conf]' do
       conf = Puppet::Type.type(:file).new(name: '/etc/yum/yum-cron.conf')
       catalog = Puppet::Resource::Catalog.new
-      catalog.add_resource @yum_cron_config
+      catalog.add_resource let(:yum_cron_config)
       catalog.add_resource conf
-      rel = @yum_cron_config.autorequire[0]
+      rel = let(:yum_cron_config).autorequire[0]
       expect(rel.source.ref).to eql(conf.ref)
-      expect(rel.target.ref).to eql(@yum_cron_config.ref)
+      expect(rel.target.ref).to eql(let(:yum_cron_config).ref)
     end
 
     it 'autorequires Package[yum-cron]' do
       conf = Puppet::Type.type(:package).new(name: 'yum-cron')
       catalog = Puppet::Resource::Catalog.new
-      catalog.add_resource @yum_cron_config
+      catalog.add_resource let(:yum_cron_config)
       catalog.add_resource conf
-      rel = @yum_cron_config.autorequire[0]
+      rel = let(:yum_cron_config).autorequire[0]
       expect(rel.source.ref).to eql(conf.ref)
-      expect(rel.target.ref).to eql(@yum_cron_config.ref)
+      expect(rel.target.ref).to eql(let(:yum_cron_config).ref)
     end
   end
 end

@@ -1,12 +1,10 @@
 # puppet-yum_cron
 
-[![Puppet Forge](http://img.shields.io/puppetforge/v/treydock/yum_cron.svg)](https://forge.puppetlabs.com/treydock/yum_cron)
-[![Build Status](https://travis-ci.org/treydock/puppet-yum_cron.svg?branch=master)](https://travis-ci.org/treydock/puppet-yum_cron)
+[![Build Status](https://travis-ci.org/yorickps/puppet-yum_cron.svg?branch=master)](https://travis-ci.org/yorickps/puppet-yum_cron)
 
 #### Table of Contents
 
 1. [Overview - What is the yum_cron module?](#overview)
-2. [Backwards Compatibility - Key changes between versions](#backwards-compatibility)
 2. [Usage - Configuration and customization options](#usage)
 3. [Reference - Parameter and detailed reference to all options](#reference)
     * [Public Classes](#public-classes)
@@ -18,15 +16,17 @@
 
 The yum_cron module manages the *yum-cron* package to allow for automatic updates and available updates notifications.
 
+This module is a fork of [treydock/yum_cron](https://github.com/treydock/puppet-yum_cron) and inspired by it, but has undergone a total rewrite. Shellvars have been dropped for the use of puppet templates e.g.
+
 ## Usage
 
 ### Class: yum_cron
 
 The default parameters will install and enable yum-cron to only check for updates and notify root if any are available.
 
-**On Scientific Linux the default behavior is also to disable *yum-autoupdate*.**
-
+```
     class { 'yum_cron': }
+```
 
 These are the actions taken by the module with default parameter values:
 
@@ -37,9 +37,11 @@ These are the actions taken by the module with default parameter values:
 
 This is an example of enabling automatic updates
 
-    class { 'yum_cron':
+```
+class { 'yum_cron':
       apply_updates => true,
     }
+```
 
 Refer to the yum-cron manpage for all available configuration options.
 
@@ -47,19 +49,23 @@ Additional configuration values can be passed to the `yum-cron` configurations v
 
 To define additional configuration options for EL6:
 
+```
     class { 'yum_cron':
       extra_configs => {
         'yum_cron ERROR_LEVEL' => { 'variable' => 'ERROR_LEVEL', 'value' => '1' }
       }
     }
+```
 
 To define additional configuration options for EL7:
 
+```
     class { 'yum_cron':
       extra_configs => {
         'email/email_from' => { 'value' => 'foo@bar.com' }
       }
     }
+```
 
 ## Reference
 
@@ -144,9 +150,7 @@ yum_cron::randomwait: '360'
 yum_cron::service_provider: 'systemd'
 ```
 
-
-
-
+### Parameter info
 
 ##### `ensure`
 
@@ -281,7 +285,6 @@ It has only been tested on:
 
 * CentOS 7
 * CentOS 6
-* Scientific Linux 6
 
 ## Development
 

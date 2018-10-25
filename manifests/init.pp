@@ -15,6 +15,7 @@ class yum_cron (
   Optional[Enum['yes','no']] $check_first,
   Optional[Enum['yes','no']] $check_only,
   Optional[Enum['yes','no']] $service_waits,
+  Optional[Integer] $random_sleep_hourly,
   Optional[Integer] $service_wait_time,
   Optional[Pattern[/^[0-6]$/]] $cleanday,
   Optional[Pattern[/^[0-9]+$/]] $error_level,

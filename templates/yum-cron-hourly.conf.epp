@@ -60,6 +60,7 @@ email_host = <%= $yum_cron::email_host %>
 
 
 [groups]
+# NOTE: This only works when group_command != objects, which is now the default
 # List of groups to update
 group_list = None
 

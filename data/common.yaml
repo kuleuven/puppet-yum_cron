@@ -33,4 +33,6 @@ yum_cron::service_name: 'yum-cron'
 yum_cron::service_provider: ~
 yum_cron::service_wait_time: 300
 yum_cron::service_waits: 'yes'
+yum_cron::update_cmd: 'default'
+yum_cron::update_messages: 'yes'
 yum_cron::yum_autoupdate_ensure: ~

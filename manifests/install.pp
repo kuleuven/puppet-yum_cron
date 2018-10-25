@@ -7,10 +7,5 @@ class yum_cron::install {
       ensure => $yum_cron::package_ensure,
     }
 
-    if $::operatingsystem =~ /Scientific/ and $yum_cron::yum_autoupdate_ensure == 'absent' {
-      package { 'yum-autoupdate':
-        ensure  => absent,
-      }
-    }
   }
 }

@@ -1,12 +1,12 @@
 {
-  "name": "treydock-yum_cron",
-  "version": "4.0.0",
-  "author": "treydock",
+  "name": "yorickps-yum_cron",
+  "version": "0.0.1",
+  "author": "yorickps",
   "summary": "yum-cron module",
   "license": "Apache-2.0",
-  "source": "git://github.com/treydock/puppet-yum_cron.git",
-  "project_page": "http://github.com/treydock/puppet-yum_cron",
-  "issues_url": "https://github.com/treydock/puppet-yum_cron/issues",
+  "source": "git://github.com/yorickps/puppet-yum_cron.git",
+  "project_page": "http://github.com/yorickps/puppet-yum_cron",
+  "issues_url": "https://github.com/yorickps/puppet-yum_cron/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -27,13 +27,6 @@
     },
     {
       "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "Scientific",
       "operatingsystemrelease": [
         "6",
         "7"

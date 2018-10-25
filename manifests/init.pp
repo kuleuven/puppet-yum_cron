@@ -11,7 +11,6 @@ class yum_cron (
   Integer $output_width,
   Integer $random_sleep,
   Optional[Boolean] $service_enable,
-  Optional[Enum['undef', 'UNSET', 'absent', 'disabled']] $yum_autoupdate_ensure,
   Optional[Enum['yes','no']] $check_first,
   Optional[Enum['yes','no']] $check_only,
   Optional[Enum['yes','no']] $service_waits,

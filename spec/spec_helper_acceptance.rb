@@ -7,7 +7,7 @@ require 'beaker/module_install_helper'
 UNSUPPORTED_PLATFORMS = ['windows', 'Darwin'].freeze
 
 dir = File.expand_path(File.dirname(__FILE__))
-Dir["#{dir}/acceptance/shared_examples/**/*.rb"].sort.each {|f| require f}
+Dir["#{dir}/acceptance/shared_examples/**/*.rb"].sort.each { |f| require f }
 
 run_puppet_install_helper
 configure_type_defaults_on(hosts)

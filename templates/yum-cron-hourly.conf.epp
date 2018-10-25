@@ -27,7 +27,12 @@ apply_updates = <%= $yum_cron::apply_updates %>
 # minutes before running.  This is useful for e.g. staggering the
 # times that multiple systems will access update servers.  If
 # random_sleep is 0 or negative, the program will run immediately.
-random_sleep = <%= $yum_cron::random_sleep %>
+
+<% if $yum_cron::random_sleep_hourly {-%>
+random_sleep = <%= $yum_cron::random_sleep_hourly %>
+<% } else {-%>
+random_sleep = 15
+<% } -%>
 
 [emitters]
 # Name to use for this system in messages that are emitted.  If
@@ -58,9 +63,7 @@ email_to = <%= $yum_cron::email_to %>
 # Name of the host to connect to to send email messages.
 email_host = <%= $yum_cron::email_host %>
 
-
 [groups]
-# NOTE: This only works when group_command != objects, which is now the default
 # List of groups to update
 group_list = None
 

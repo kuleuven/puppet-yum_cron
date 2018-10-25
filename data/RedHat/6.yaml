@@ -1,4 +1,11 @@
 ---
+yum_cron::check_first: 'no'
+yum_cron::check_only: 'yes'
+yum_cron::cleanday: '0'
 yum_cron::config: /etc/sysconfig/yum-cron
+yum_cron::days_of_week: '0123456'
 yum_cron::debug_level: '0'
+yum_cron::error_level: '0'
 yum_cron::service_provider: 'sysvinit'
+yum_cron::service_wait_time: 300
+yum_cron::service_waits: 'yes'

@@ -1,21 +1,15 @@
 ---
 yum_cron::apply_updates: 'no'
-yum_cron::check_first: 'no'
-yum_cron::check_only: 'yes'
-yum_cron::cleanday: '0'
 yum_cron::config: /etc/yum/yum-cron.conf
 yum_cron::config_cron_hourly: /etc/cron.hourly/0yum-hourly.cron
 yum_cron::config_yum_hourly: /etc/yum/yum-cron-hourly.conf
-yum_cron::days_of_week: '0123456'
 yum_cron::debug_level: '-2'
-yum_cron::download_only: 'yes'
 yum_cron::download_updates: 'yes'
 yum_cron::email_from: 'root@localhost'
 yum_cron::email_host: "%{facts.networking.fqdn}"
 yum_cron::email_to: 'root'
 yum_cron::emit_via: 'stdio' #stdio/email/none
 yum_cron::enable: true
-yum_cron::error_level: '0'
 yum_cron::extra_configs: {}
 yum_cron::hostname: "%{facts.networking.fqdn}"
 yum_cron::output_width: 80
@@ -25,15 +19,20 @@ yum_cron::package_name: 'yum-cron'
 yum_cron::random_sleep: 360
 yum_cron::random_sleep_hourly: 15
 yum_cron::randomwait: '60'
-yum_cron::service_enable: ~
-yum_cron::service_ensure: ~
+yum_cron::service_enable: true
+yum_cron::service_ensure: 'running'
 yum_cron::service_hasrestart: true
 yum_cron::service_hasstatus: true
 yum_cron::service_manage: true
 yum_cron::service_name: 'yum-cron'
 yum_cron::service_provider: ~
-yum_cron::service_wait_time: 300
-yum_cron::service_waits: 'yes'
 yum_cron::update_cmd: 'default'
 yum_cron::update_messages: 'yes'
-yum_cron::yum_autoupdate_ensure: ~
+# optional - for el6
+yum_cron::check_first: ~
+yum_cron::check_only: ~
+yum_cron::cleanday: ~
+yum_cron::days_of_week: ~
+yum_cron::error_level: ~
+yum_cron::service_wait_time: ~
+yum_cron::service_waits: ~

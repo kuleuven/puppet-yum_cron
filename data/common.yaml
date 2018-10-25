@@ -4,8 +4,8 @@ yum_cron::check_first: 'no'
 yum_cron::check_only: 'yes'
 yum_cron::cleanday: '0'
 yum_cron::config: /etc/yum/yum-cron.conf
-yum_cron::config_cron: /etc/cron.hourly/0yum-hourly.cron
-yum_cron::config_cron_hourly: /etc/yum/yum-cron-hourly.conf
+yum_cron::config_cron_hourly: /etc/cron.hourly/0yum-hourly.cron
+yum_cron::config_yum_hourly: /etc/yum/yum-cron-hourly.conf
 yum_cron::days_of_week: '0123456'
 yum_cron::debug_level: '-2'
 yum_cron::download_only: 'yes'

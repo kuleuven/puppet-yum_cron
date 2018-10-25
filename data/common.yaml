@@ -1,5 +1,5 @@
 ---
-yum_cron::apply_updates: false
+yum_cron::apply_updates: 'no'
 yum_cron::check_first: 'no'
 yum_cron::check_only: 'yes'
 yum_cron::cleanday: '0'
@@ -22,7 +22,7 @@ yum_cron::output_width: 80
 yum_cron::package_ensure: 'present'
 yum_cron::package_manage: true
 yum_cron::package_name: 'yum-cron'
-yum_cron::random_sleep: 120
+yum_cron::random_sleep: 360
 yum_cron::randomwait: '60'
 yum_cron::service_enable: ~
 yum_cron::service_ensure: ~

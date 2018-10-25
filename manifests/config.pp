@@ -15,6 +15,14 @@ class yum_cron::config {
       notify  => Service['yum-cron'],
     }
 
+    file { $yum_cron::config_yum_hourly:
+      ensure  => file,
+      owner   => 0,
+      group   => 0,
+      mode    => '0644',
+      content => epp('yum_cron/yum-cron-hourly.conf.epp'),
+    }
+
     file { $yum_cron::config_cron_hourly:
       ensure  => file,
       owner   => 0,
@@ -24,13 +32,6 @@ class yum_cron::config {
       notify  => Service['yum-cron'],
     }
 
-    file { $yum_cron::config_yum_hourly:
-      ensure  => file,
-      owner   => 0,
-      group   => 0,
-      mode    => '0644',
-      content => epp('yum_cron/yum-cron-hourly.conf.epp'),
-    }
   }
 
   if $::operatingsystemmajrelease == '6' {

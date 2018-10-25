@@ -2,10 +2,10 @@
 class yum_cron (
   #$randomwait = fqdn_rand(30)
   $hostname,
-  Boolean $download_updates,
   Boolean $package_manage,
   Boolean $service_manage,
   Enum['yes','no'] $apply_updates,
+  Enum['yes','no'] $download_updates,
   Enum['yes','no'] $update_messages,
   Hash $extra_configs,
   Integer $output_width,

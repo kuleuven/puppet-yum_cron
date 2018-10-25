@@ -9,7 +9,7 @@ yum_cron::config_yum_hourly: /etc/yum/yum-cron-hourly.conf
 yum_cron::days_of_week: '0123456'
 yum_cron::debug_level: '-2'
 yum_cron::download_only: 'yes'
-yum_cron::download_updates: true
+yum_cron::download_updates: 'yes'
 yum_cron::email_from: 'root@localhost'
 yum_cron::email_host: "%{facts.networking.fqdn}"
 yum_cron::email_to: 'root'

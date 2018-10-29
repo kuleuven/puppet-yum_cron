@@ -5,7 +5,7 @@ yum_cron::config_cron_hourly: /etc/cron.hourly/0yum-hourly.cron
 yum_cron::config_yum_hourly: /etc/yum/yum-cron-hourly.conf
 yum_cron::debug_level: '-2'
 yum_cron::download_updates: 'yes'
-yum_cron::email_from: 'root@localhost'
+yum_cron::email_from: "root@%{facts.networking.fqdn}"
 yum_cron::email_host: "%{facts.networking.fqdn}"
 yum_cron::email_to: 'root'
 yum_cron::emit_via: 'stdio' #stdio/email/none

@@ -124,7 +124,6 @@ yum_cron::yum_autoupdate_ensure: ~
 #### RedHat family
 
 ```yaml
----
 yum_cron::package_name: 'yum-cron'
 yum_cron::service_name: 'yum-cron'
 yum_cron::service_hasstatus: true
@@ -136,7 +135,6 @@ yum_cron::mailto: 'root'
 #### RedHat 6
 
 ```yaml
----
 yum_cron::config: /etc/sysconfig/yum-cron
 yum_cron::debug_level: '0'
 yum_cron::service_provider: 'sysvinit'
@@ -145,7 +143,6 @@ yum_cron::service_provider: 'sysvinit'
 #### RedHat 7
 
 ```yaml
----
 yum_cron::randomwait: '360'
 yum_cron::service_provider: 'systemd'
 ```
